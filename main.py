@@ -1,6 +1,5 @@
 import tkinter
 import customtkinter
-import requests
 
 
 # récupére les élement de data.txt 
@@ -31,27 +30,6 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
-#Verifie la version de l'app (requete azarma.cf)
-    app_version = "1.1"
-    serv_version = requests.get("https://azarma.000webhostapp.com/app-version.txt")
-    print(serv_version.text)
-    
-    def update_toplevel():
-        global app_version
-        window = customtkinter.CTkToplevel()
-        window.title("Atlas Manager have an update!")
-        window.geometry("300x100")
-
-        # create label on CTkToplevel window
-        label = customtkinter.CTkLabel(window, text="Your current Atlas Manager version " + app_version)
-        label.pack(side="top", fill="both", expand=True, padx=10, pady=10)
-        label2 = customtkinter.CTkLabel(window, text="Lastest version online " + serv_version)
-        label2.pack(side="top", fill="both", expand=True, padx=10, pady=20)
-
-
-    if serv_version != app_version:
-        update_toplevel()
-        print("marche pas égal")    
         
         # configure window
         self.title("Atlas Manager")
